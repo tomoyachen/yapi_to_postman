@@ -4,15 +4,22 @@
 
 import requests
 import json
+import configparser
+import os
 
 
-IP = "http://dev-api.hfjy.com"
+
+IP = "http://dev-api.xxxx.com"
+USERNAME = "xxxxxxxx"
+PASSWORD = "xxxxxxxx"
 COOKIE = ""
 
 
 def login():
     global IP
     global COOKIE
+    global USERNAME
+    global PASSWORD
     url = IP + "/api/user/login_by_ldap"
 
     headers = {
@@ -20,8 +27,8 @@ def login():
     }
 
     body = {}
-    body["email"] = "chenwei263@hfjy.com"
-    body["password"] = "Aa111111"
+    body["email"] = USERNAME
+    body["password"] = PASSWORD
     payload = json.dumps(body)
 
     response = requests.request("POST", url, headers=headers, data=payload)
@@ -252,7 +259,7 @@ def get_search_project(keywords):
     return idDict
 
 #api详情转dict
-def api_to_dict(HTTP, URL, API_INFO):
+def api_to_dict(URL, API_INFO):
     api = {}
     name = API_INFO["title"]
 
@@ -309,8 +316,15 @@ def api_to_dict(HTTP, URL, API_INFO):
 
     url = {}
     # raw = None
-    protocol = HTTP
-    host = URL.split(".")
+
+    protocol = ""
+    host = []
+    if len(URL.split("://")) == 1:
+        host = URL.strip().split("://")[0].split(".")
+    elif len(URL.split("://")) >= 1:
+        protocol = URL.strip().split("://")[0]
+        host = URL.strip().split("://")[1].split(".")
+
     path = API_INFO["path"]
     query = {}
     query_tmp_list = []
