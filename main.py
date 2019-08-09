@@ -69,7 +69,7 @@ def export_api_to_postman(YAPI_PROJECT):
         if os.path.exists(FILE_PATH + "\\" + "Postman_" + project_value):
             pass
         else:
-            os.mkdir(FILE_PATH + "\\" +  project_value + "_Postman")
+            os.mkdir(FILE_PATH + "\\" + "Postman_" + project_value)
 
         # 接口分组
         api_group_list = controller.get_api_group_dict(project_id=project_key)
