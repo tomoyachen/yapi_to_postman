@@ -9,9 +9,9 @@ import os
 
 
 
-IP = "http://dev-api.xxxx.com"
-USERNAME = "xxxxxxxx"
-PASSWORD = "xxxxxxxx"
+IP = "http://dev-api.xxx.com"
+USERNAME = "xxxx@xxxx.com"
+PASSWORD = "xxxx"
 COOKIE = ""
 
 
@@ -153,6 +153,11 @@ def get_api_group_dict(project_id):
 
     return idDict
 
+def get_basepath_by_project(project_id):
+    response = api_group(project_id)
+    apiProjectInfo = json.loads(response)["data"]
+    return apiProjectInfo["basepath"]
+
 
 
 # 获取接口列表
@@ -259,7 +264,7 @@ def get_search_project(keywords):
     return idDict
 
 #api详情转dict
-def api_to_dict(URL, API_INFO):
+def api_to_dict(URL, BASEPATH="", API_INFO={}):
     api = {}
     name = API_INFO["title"]
 
@@ -325,7 +330,7 @@ def api_to_dict(URL, API_INFO):
         protocol = URL.strip().split("://")[0]
         host = URL.strip().split("://")[1].split(".")
 
-    path = API_INFO["path"]
+    path = BASEPATH + API_INFO["path"]
     query = {}
     query_tmp_list = []
     for item in API_INFO["req_query"]:
