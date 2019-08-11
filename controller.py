@@ -4,14 +4,12 @@
 
 import requests
 import json
-import configparser
-import os
 
 
 
 IP = "http://dev-api.xxxx.com"
 USERNAME = "xxxx@xxxx.com"
-PASSWORD = "xxxx"
+PASSWORD = "Aa111111"
 COOKIE = ""
 
 
@@ -226,7 +224,7 @@ def get_api_info(api_id):
     response = api_info(api_id)
     apiGroupInfo = json.loads(response)["data"]
 
-    print(apiGroupInfo)
+    # print(apiGroupInfo)
 
     return apiGroupInfo
 
@@ -361,8 +359,10 @@ def api_to_dict(URL, BASEPATH="", API_INFO={}):
     api["request"] = request
     api["response"] = []
 
-    print(api)
+    print(path)
+    # print(api)
     # print(json.dumps(api))
+
 
     return api
 
@@ -385,7 +385,7 @@ def api_list_to_dict(NAME, API_LIST, isROOT=False):
         api_list["name"] = NAME
         api_list["item"] = API_LIST
 
-    print(api_list)
+    # print(api_list)
     # print(json.dumps(api_list))
 
     return api_list

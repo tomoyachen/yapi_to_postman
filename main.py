@@ -3,11 +3,27 @@
 
 import controller
 import os
+import sys
+
 
 URL = "{{IP}}"
 # URL = "https://t-xxxx.xxxx.com"
 YAPI_PROJECT = "demo"
 FILE_PATH = "E:\\Desktop"
+
+try:
+    YAPI_PROJECT = sys.argv[1]
+except Exception:
+    pass
+
+try:
+    FILE_PATH = sys.argv[2]
+except Exception:
+    pass
+
+print ("YAPI 项目名: ", YAPI_PROJECT)
+print ("导出路径: ", FILE_PATH)
+print("--------------------开始导出--------------------")
 
 
 def login():
@@ -49,7 +65,7 @@ def export_project_to_postman(YAPI_PROJECT):
         api_list_dict = controller.api_list_to_dict(NAME=project_value, API_LIST=list, isROOT=True)
         postman = controller.api_list_to_postman(api_list_dict)
         controller.export_postman(API_JSON=postman, FILE_PATH=FILE_PATH + "\\" + project_value + ".postman_collection.json")
-
+    print("----------导出成功--------------------")
 
 #导出多个文件，每个文件是一个分组
 def export_api_to_postman(YAPI_PROJECT):
@@ -92,6 +108,7 @@ def export_api_to_postman(YAPI_PROJECT):
             postman = controller.api_list_to_postman(api_group_dict)
             controller.export_postman(API_JSON=postman, FILE_PATH=FILE_PATH + "\\" + "Postman_" + project_value + "\\" + api_group_value + ".postman_collection.json")
 
+    print("--------------------导出成功--------------------")
 
 
 login()
