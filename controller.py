@@ -9,7 +9,7 @@ import json
 
 IP = "http://dev-api.xxxx.com"
 USERNAME = "xxxx@xxxx.com"
-PASSWORD = "Aa111111"
+PASSWORD = "xxxx"
 COOKIE = ""
 
 
@@ -300,10 +300,15 @@ def api_to_dict(URL, BASEPATH="", API_INFO={}):
                 formdata_tmp["value"] = item["example"]
             else:
                 formdata_tmp["value"] = ""
+            required = ""
+            if item["required"] == "1":
+                required = " 必填"
+            elif item["required"] == "0":
+                required = " 非必填"
             if item.get("desc"):
-                formdata_tmp["description"] = item["desc"]
+                formdata_tmp["description"] = item["desc"] + required
             else:
-                formdata_tmp["description"] = ""
+                formdata_tmp["description"] = "" + required
             formdata_tmp_list.append(formdata_tmp)
             # print("formdata_tmp", query_tmp)
             formdata = formdata_tmp_list
@@ -339,7 +344,15 @@ def api_to_dict(URL, BASEPATH="", API_INFO={}):
             query_tmp["value"] = item["example"]
         else:
             query_tmp["value"] = ""
-        query_tmp["description"] = item["desc"]
+        required = ""
+        if item["required"] == "1":
+            required = " 必填"
+        elif item["required"] == "0":
+            required = " 非必填"
+        if item.get("desc"):
+            query_tmp["description"] = item["desc"] + required
+        else:
+            query_tmp["description"] = "" + required
         query_tmp_list.append(query_tmp)
         # print("query_tmp", query_tmp)
     query = query_tmp_list
