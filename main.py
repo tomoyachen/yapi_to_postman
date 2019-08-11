@@ -23,6 +23,7 @@ except Exception:
 
 print ("YAPI 项目名: ", YAPI_PROJECT)
 print ("导出路径: ", FILE_PATH)
+print ("域名: ", URL)
 print("--------------------开始导出--------------------")
 
 
