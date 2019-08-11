@@ -11,7 +11,7 @@ import os
 
 IP = "http://dev-api.xxxx.com"
 USERNAME = "xxxx@xxxx.com"
-PASSWORD = "Aa111111"
+PASSWORD = "xxxx"
 COOKIE = ""
 
 
