@@ -5,8 +5,8 @@ import controller
 import os
 
 URL = "{{IP}}"
-# URL = "https://t-ijx.xxxx.com"
-YAPI_PROJECT = "B_ijw"
+# URL = "https://t-xxxx.xxxx.com"
+YAPI_PROJECT = "demo"
 FILE_PATH = "E:\\Desktop"
 
 

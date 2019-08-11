@@ -9,9 +9,9 @@ import os
 
 
 
-IP = "http://dev-api.xxx.com"
+IP = "http://dev-api.xxxx.com"
 USERNAME = "xxxx@xxxx.com"
-PASSWORD = "xxxx"
+PASSWORD = "Aa111111"
 COOKIE = ""
 
 
@@ -297,6 +297,7 @@ def api_to_dict(URL, BASEPATH="", API_INFO={}):
         for item in API_INFO["req_body_form"]:
             formdata_tmp = {}
             formdata_tmp["key"] = item["name"]
+            formdata_tmp["type"] = item["type"]
             if item.get("example"):
                 formdata_tmp["value"] = item["example"]
             else:
