@@ -7,7 +7,7 @@ import json
 
 
 
-IP = "http://dev-api.xxxx.com"
+IP = "http://dev-api.xxx.com"
 USERNAME = "xxxx@xxxx.com"
 PASSWORD = "xxxx"
 COOKIE = ""

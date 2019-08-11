@@ -41,9 +41,11 @@ def export_project_to_postman(YAPI_PROJECT):
     keywords = YAPI_PROJECT
     api_group_list = controller.get_search_project(keywords)
     if len(api_group_list) > 1:
-        print("查询结果过多，请输入完整项目名查询！", api_group_list)
+        print("查询结果过多，请输入完整项目名查询！")
+        print("--------------------导出失败--------------------")
     elif len(api_group_list) < 1:
         print("查询结果为空！")
+        print("--------------------导出失败--------------------")
     else:
         list = []
 
@@ -71,7 +73,7 @@ def export_project_to_postman(YAPI_PROJECT):
         api_list_dict = controller.api_list_to_dict(NAME=project_value, API_LIST=list, isROOT=True)
         postman = controller.api_list_to_postman(api_list_dict)
         controller.export_postman(API_JSON=postman, FILE_PATH=FILE_PATH + "\\" + project_value + ".postman_collection.json")
-    print("----------导出成功--------------------")
+        print("--------------------导出成功--------------------")
 
 #导出多个文件，每个文件是一个分组
 def export_api_to_postman(YAPI_PROJECT):
@@ -79,9 +81,11 @@ def export_api_to_postman(YAPI_PROJECT):
     keywords = YAPI_PROJECT
     api_group_list = controller.get_search_project(keywords)
     if len(api_group_list) > 1:
-        print("查询结果过多，请输入完整项目名查询！", api_group_list)
+        print("查询结果过多，请输入完整项目名查询！")
+        print("--------------------导出失败--------------------")
     elif len(api_group_list) < 1:
         print("查询结果为空！")
+        print("--------------------导出失败--------------------")
     else:
         list = []
 
@@ -114,7 +118,7 @@ def export_api_to_postman(YAPI_PROJECT):
             postman = controller.api_list_to_postman(api_group_dict)
             controller.export_postman(API_JSON=postman, FILE_PATH=FILE_PATH + "\\" + "Postman_" + project_value + "\\" + api_group_value + ".postman_collection.json")
 
-    print("--------------------导出成功--------------------")
+        print("--------------------导出成功--------------------")
 
 
 login()
